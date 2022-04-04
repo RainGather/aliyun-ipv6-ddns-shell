@@ -17,6 +17,7 @@ die () {
     echo $1
 }
 
+# 如果网卡不是eth0就修改成对应的网卡名字
 ipv6s=`ip addr show eth0 | grep "inet6.*global" | awk '{print $2}' | awk -F"/" '{print $1}'` || die "$ipv6"
 
 for ipv6 in $ipv6s
